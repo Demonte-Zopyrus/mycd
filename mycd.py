@@ -30,12 +30,16 @@ def printDir(dirName):
             else:
                 print(dir, ": No such file or directory")
                 print('Note: directory name can only contain alphanumeric characters.')
+                return
     # print the new constructed list
     print('/' + '/'.join(newDirList))
 
 
 def resolveDir(baseDir,cdPath):
-    return baseDir + '/' + cdPath
+    if cdPath.startswith('/'):
+        return cdPath
+    else:
+        return baseDir + '/' + cdPath
 
 
 if len(sys.argv) == 2:
